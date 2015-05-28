@@ -1,2 +1,2 @@
-Original library: http://sourceforge.net/projects/libdwarf/
+Original library: http://sourceforge.net/projects/libdwarf/  Commit: http://sourceforge.net/p/libdwarf/code/ci/b272f04131ddeff45011a72b1dd2bdfb81c13d64/
 I just make some optimization so it would compile on Visual Studio 2013.
