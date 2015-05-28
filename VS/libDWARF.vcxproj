@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\libdwarf\common.c" />
+    <ClCompile Include="..\libdwarf\dwarf_abbrev.c" />
+    <ClCompile Include="..\libdwarf\dwarf_addr_finder.c" />
+    <ClCompile Include="..\libdwarf\dwarf_alloc.c" />
+    <ClCompile Include="..\libdwarf\dwarf_arange.c" />
+    <ClCompile Include="..\libdwarf\dwarf_die_deliv.c" />
+    <ClCompile Include="..\libdwarf\dwarf_elf_access.c" />
+    <ClCompile Include="..\libdwarf\dwarf_error.c" />
+    <ClCompile Include="..\libdwarf\dwarf_form.c" />
+    <ClCompile Include="..\libdwarf\dwarf_frame.c" />
+    <ClCompile Include="..\libdwarf\dwarf_frame2.c" />
+    <ClCompile Include="..\libdwarf\dwarf_frame3.c" />
+    <ClCompile Include="..\libdwarf\dwarf_funcs.c" />
+    <ClCompile Include="..\libdwarf\dwarf_gdbindex.c" />
+    <ClCompile Include="..\libdwarf\dwarf_global.c" />
+    <ClCompile Include="..\libdwarf\dwarf_harmless.c" />
+    <ClCompile Include="..\libdwarf\dwarf_init_finish.c" />
+    <ClCompile Include="..\libdwarf\dwarf_leb.c" />
+    <ClCompile Include="..\libdwarf\dwarf_line.c" />
+    <ClCompile Include="..\libdwarf\dwarf_line2.c" />
+    <ClCompile Include="..\libdwarf\dwarf_loc.c" />
+    <ClCompile Include="..\libdwarf\dwarf_macro.c" />
+    <ClCompile Include="..\libdwarf\dwarf_original_elf_init.c" />
+    <ClCompile Include="..\libdwarf\dwarf_print_lines.c" />
+    <ClCompile Include="..\libdwarf\dwarf_pubtypes.c" />
+    <ClCompile Include="..\libdwarf\dwarf_query.c" />
+    <ClCompile Include="..\libdwarf\dwarf_ranges.c" />
+    <ClCompile Include="..\libdwarf\dwarf_sort_line.c" />
+    <ClCompile Include="..\libdwarf\dwarf_string.c" />
+    <ClCompile Include="..\libdwarf\dwarf_stubs.c" />
+    <ClCompile Include="..\libdwarf\dwarf_tsearchhash.c" />
+    <ClCompile Include="..\libdwarf\dwarf_types.c" />
+    <ClCompile Include="..\libdwarf\dwarf_util.c" />
+    <ClCompile Include="..\libdwarf\dwarf_vars.c" />
+    <ClCompile Include="..\libdwarf\dwarf_weaks.c" />
+    <ClCompile Include="..\libdwarf\dwarf_xu_index.c" />
+    <ClCompile Include="..\libdwarf\dwgetopt.c" />
+    <ClCompile Include="..\libdwarf\gennames.c" />
+    <ClCompile Include="..\libdwarf\malloc_check.c" />
+    <ClCompile Include="..\libdwarf\pro_alloc.c" />
+    <ClCompile Include="..\libdwarf\pro_arange.c" />
+    <ClCompile Include="..\libdwarf\pro_die.c" />
+    <ClCompile Include="..\libdwarf\pro_encode_nm.c" />
+    <ClCompile Include="..\libdwarf\pro_error.c" />
+    <ClCompile Include="..\libdwarf\pro_expr.c" />
+    <ClCompile Include="..\libdwarf\pro_finish.c" />
+    <ClCompile Include="..\libdwarf\pro_forms.c" />
+    <ClCompile Include="..\libdwarf\pro_frame.c" />
+    <ClCompile Include="..\libdwarf\pro_funcs.c" />
+    <ClCompile Include="..\libdwarf\pro_init.c" />
+    <ClCompile Include="..\libdwarf\pro_line.c" />
+    <ClCompile Include="..\libdwarf\pro_macinfo.c" />
+    <ClCompile Include="..\libdwarf\pro_pubnames.c" />
+    <ClCompile Include="..\libdwarf\pro_reloc.c" />
+    <ClCompile Include="..\libdwarf\pro_reloc_stream.c" />
+    <ClCompile Include="..\libdwarf\pro_reloc_symbolic.c" />
+    <ClCompile Include="..\libdwarf\pro_section.c" />
+    <ClCompile Include="..\libdwarf\pro_types.c" />
+    <ClCompile Include="..\libdwarf\pro_vars.c" />
+    <ClCompile Include="..\libdwarf\pro_weaks.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\libdwarf\cmplrs\dwarf_addr_finder.h" />
+    <ClInclude Include="..\libdwarf\common.h" />
+    <ClInclude Include="..\libdwarf\config.h" />
+    <ClInclude Include="..\libdwarf\dwarf.h" />
+    <ClInclude Include="..\libdwarf\dwarf_abbrev.h" />
+    <ClInclude Include="..\libdwarf\dwarf_alloc.h" />
+    <ClInclude Include="..\libdwarf\dwarf_arange.h" />
+    <ClInclude Include="..\libdwarf\dwarf_base_types.h" />
+    <ClInclude Include="..\libdwarf\dwarf_die_deliv.h" />
+    <ClInclude Include="..\libdwarf\dwarf_elf_access.h" />
+    <ClInclude Include="..\libdwarf\dwarf_error.h" />
+    <ClInclude Include="..\libdwarf\dwarf_frame.h" />
+    <ClInclude Include="..\libdwarf\dwarf_funcs.h" />
+    <ClInclude Include="..\libdwarf\dwarf_gdbindex.h" />
+    <ClInclude Include="..\libdwarf\dwarf_global.h" />
+    <ClInclude Include="..\libdwarf\dwarf_harmless.h" />
+    <ClInclude Include="..\libdwarf\dwarf_incl.h" />
+    <ClInclude Include="..\libdwarf\dwarf_line.h" />
+    <ClInclude Include="..\libdwarf\dwarf_loc.h" />
+    <ClInclude Include="..\libdwarf\dwarf_macro.h" />
+    <ClInclude Include="..\libdwarf\dwarf_opaque.h" />
+    <ClInclude Include="..\libdwarf\dwarf_reloc_arm.h" />
+    <ClInclude Include="..\libdwarf\dwarf_reloc_mips.h" />
+    <ClInclude Include="..\libdwarf\dwarf_reloc_ppc.h" />
+    <ClInclude Include="..\libdwarf\dwarf_reloc_ppc64.h" />
+    <ClInclude Include="..\libdwarf\dwarf_reloc_x86_64.h" />
+    <ClInclude Include="..\libdwarf\dwarf_tsearch.h" />
+    <ClInclude Include="..\libdwarf\dwarf_types.h" />
+    <ClInclude Include="..\libdwarf\dwarf_util.h" />
+    <ClInclude Include="..\libdwarf\dwarf_vars.h" />
+    <ClInclude Include="..\libdwarf\dwarf_weaks.h" />
+    <ClInclude Include="..\libdwarf\dwarf_xu_index.h" />
+    <ClInclude Include="..\libdwarf\dwgetopt.h" />
+    <ClInclude Include="..\libdwarf\libdwarfdefs.h" />
+    <ClInclude Include="..\libdwarf\malloc_check.h" />
+    <ClInclude Include="..\libdwarf\pro_alloc.h" />
+    <ClInclude Include="..\libdwarf\pro_arange.h" />
+    <ClInclude Include="..\libdwarf\pro_die.h" />
+    <ClInclude Include="..\libdwarf\pro_encode_nm.h" />
+    <ClInclude Include="..\libdwarf\pro_error.h" />
+    <ClInclude Include="..\libdwarf\pro_expr.h" />
+    <ClInclude Include="..\libdwarf\pro_frame.h" />
+    <ClInclude Include="..\libdwarf\pro_incl.h" />
+    <ClInclude Include="..\libdwarf\pro_line.h" />
+    <ClInclude Include="..\libdwarf\pro_macinfo.h" />
+    <ClInclude Include="..\libdwarf\pro_opaque.h" />
+    <ClInclude Include="..\libdwarf\pro_reloc.h" />
+    <ClInclude Include="..\libdwarf\pro_reloc_stream.h" />
+    <ClInclude Include="..\libdwarf\pro_reloc_symbolic.h" />
+    <ClInclude Include="..\libdwarf\pro_section.h" />
+    <ClInclude Include="..\libdwarf\pro_types.h" />
+    <ClInclude Include="..\libdwarf\pro_util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\libdwarf\libdwarf.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{33667FE0-094A-4147-B492-369927FFFAA3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libDWARF</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;__LIBELF_INTERNAL__;LIBDWARF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Projects\libelf\lib\</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(ProjectDir)libELF.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBDWARF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
