@@ -353,10 +353,14 @@
     <ClInclude Include="..\libdwarf\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\libdwarf\libdwarf.swig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\libdwarf\libdwarf.h">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="..\.gitignore" />
   </ItemGroup>
 </Project>
