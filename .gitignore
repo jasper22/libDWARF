@@ -207,3 +207,11 @@ FakesAssemblies/
 junk*
 *~
 *.obj
+*.obj
+*.tlog
+VS/Debug/libDWARF.tlog/libDWARF.lastbuildstate
+*.tlog
+VS/Debug/libDWARF.tlog/link.read.1.tlog
+*.obj
+VS/Debug/pro_die.obj
+*.pdb
