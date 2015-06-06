@@ -214,3 +214,5 @@ VS/Debug/*.obj
 *.lastbuildstate
 VS/Debug/
 VS\Debug\
+*.sdf
+*.suo
