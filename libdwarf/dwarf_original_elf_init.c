@@ -64,6 +64,28 @@ dwarf_elf_init_file_ownership(dwarf_elf_handle elf_file_pointer,
     Dwarf_Debug * ret_dbg,
     Dwarf_Error * error);
 
+int 
+dwarf_init2(char* filepath,
+			Dwarf_Unsigned access,
+			Dwarf_Handler errhand,
+			Dwarf_Ptr errarg,
+			Dwarf_Debug * ret_dbg,
+			Dwarf_Error * error)
+{
+	int fd = -1;
+	int O_RDONLY = 0x0000;
+	int O_BINARY = 0x8000;
+
+	fd = open(filepath, O_RDONLY | O_BINARY);
+
+	if (fd < 0) {
+		printf("Failure attempting to open \"%s\"\n", filepath);
+		return fd;
+	}
+
+	return dwarf_init(fd, access, errhand, errarg, ret_dbg, error);
+}
+
 
 /*  The basic dwarf initializer function for consumers using
     libelf.
@@ -73,7 +95,9 @@ int
 dwarf_init(int fd,
     Dwarf_Unsigned access,
     Dwarf_Handler errhand,
-    Dwarf_Ptr errarg, Dwarf_Debug * ret_dbg, Dwarf_Error * error)
+    Dwarf_Ptr errarg, 
+	Dwarf_Debug * ret_dbg, 
+	Dwarf_Error * error)
 {
     struct stat fstat_buf;
     dwarf_elf_handle elf_file_pointer = 0;

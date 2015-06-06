@@ -285,3 +285,44 @@ EXPORTS
 	dwarf_encode_signed_leb128 
 	dwarf_record_cmdline_options 
 	dwarf_cmdline_options
+
+	dwarf_get_cu_die_offset_given_cu_header_offset_b
+	dwarf_print_lines 
+	dwarf_ld_sort_lines
+	dwarf_fde_section_offset 
+	dwarf_cie_section_offset 
+	dwarf_get_TAG_name 
+	dwarf_get_children_name 
+	dwarf_get_FORM_name 
+	dwarf_get_AT_name 
+	dwarf_get_OP_name 
+	dwarf_get_ATE_name 
+	dwarf_get_DS_name 
+	dwarf_get_END_name 
+	dwarf_get_ATCF_name 
+	dwarf_get_ACCESS_name 
+	dwarf_get_VIS_name 
+	dwarf_get_VIRTUALITY_name 
+	dwarf_get_LANG_name 
+	dwarf_get_ID_name 
+	dwarf_get_CC_name 
+	dwarf_get_INL_name 
+	dwarf_get_ORD_name 
+	dwarf_get_DSC_name 
+	dwarf_get_LNS_name 
+	dwarf_get_LNE_name 
+	dwarf_get_ISA_name 
+	dwarf_get_MACINFO_name 
+	dwarf_get_CFA_name 
+	dwarf_get_EH_name 
+	dwarf_get_FRAME_name 
+	dwarf_get_CHILDREN_name 
+	dwarf_get_ADDR_name 
+	dwarf_get_SECT_name 
+	dwarf_get_MACRO_name 
+	dwarf_get_IDX_name 
+	_dwarf_print_lines
+	_dwarf_ld_sort_lines 
+	_dwarf_fde_section_offset 
+	_dwarf_cie_section_offset
+	dwarf_init2

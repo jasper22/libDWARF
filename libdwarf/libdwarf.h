@@ -1224,6 +1224,15 @@ enum Dwarf_Form_Class {
     DW_FORM_CLASS_FRAMEPTR
 };
 
+/* Will be called from C# */
+int dwarf_init2(char* fileName,
+	Dwarf_Unsigned    /*access*/,
+	Dwarf_Handler     /*errhand*/,
+	Dwarf_Ptr         /*errarg*/,
+	Dwarf_Debug*      /*dbg*/,
+	Dwarf_Error*      /*error*/);
+
+
 
 /*===========================================================================*/
 /*  Dwarf consumer interface initialization and termination operations */
@@ -3366,7 +3375,7 @@ extern int dwarf_get_CHILDREN_name(unsigned int /*val_in*/, const char ** /*s_ou
 extern int dwarf_get_ADDR_name(unsigned int /*val_in*/, const char ** /*s_out */);
 extern int dwarf_get_SECT_name (unsigned int /*val_in*/,const char ** /*s_out*/);
 extern int dwarf_get_MACRO_name (unsigned int /*val_in*/,const char ** /*s_out*/);
-extern int dwarf_get_DEFAULT_name (unsigned int /*val_in*/,const char ** /*s_out*/);
+//extern int dwarf_get_DEFAULT_name (unsigned int /*val_in*/,const char ** /*s_out*/);
 extern int dwarf_get_IDX_name (unsigned int /*val_in*/,const char ** /*s_out*/);
 
 /* END FILE */
