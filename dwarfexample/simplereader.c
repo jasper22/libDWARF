@@ -322,7 +322,7 @@ main(int argc, char **argv)
             }
         }
         filepath = argv[i];
-        fd = open(filepath,O_RDONLY);
+        fd = open(filepath, O_RDONLY | O_BINARY);
     }
     if(argc > 2) {
     }
