@@ -74,7 +74,7 @@
 #include <sys/stat.h>  /* For open() */
 #include <fcntl.h>     /* For open() */
 #include <stdlib.h>     /* For exit() */
-//#include <unistd.h>     /* For close() */
+#include <io.h>		//#include <unistd.h>     /* For close() */
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -231,7 +231,7 @@ format_sig8_string(Dwarf_Sig8*data, char* str_buf,unsigned
     cp += 2;
     buf_size -= 2;
     for (; i < sizeof(data->signature); ++i,cp+=2,buf_size--) {
-        snprintf(cp, buf_size, "%02x",
+        _snprintf(cp, buf_size, "%02x",
             (unsigned char)(data->signature[i]));
     }
     return;

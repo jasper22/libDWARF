@@ -162,19 +162,19 @@ process_args(int argc, char *argv[])
     }
 }
 
-int
-main(int argc,char **argv)
-{
-    print_version(argv[0]);
-    process_args(argc,argv);
-    print_args(argc,argv);
-    OpenAllFiles();
-    GenerateInitialFileLines();
-    ParseDefinitionsAndWriteOutput();
-    WriteFileTrailers();
-    CloseAllFiles();
-    return 0;
-}
+//int
+//main(int argc,char **argv)
+//{
+//    print_version(argv[0]);
+//    process_args(argc,argv);
+//    print_args(argc,argv);
+//    OpenAllFiles();
+//    GenerateInitialFileLines();
+//    ParseDefinitionsAndWriteOutput();
+//    WriteFileTrailers();
+//    CloseAllFiles();
+//    return 0;
+//}
 
 /* Print the array used to hold the tags, attributes values */
 #ifdef TRACE_ARRAY
