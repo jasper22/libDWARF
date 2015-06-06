@@ -37,7 +37,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
-#include <unistd.h> /* for dup2() */
+//#include <unistd.h> /* for dup2() */
 #include "dwgetopt.h"
 #include "makename.h"
 #include "dwconf.h"

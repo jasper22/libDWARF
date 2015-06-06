@@ -5,6 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDWARF", "libDWARF.vcxproj", "{33667FE0-094A-4147-B492-369927FFFAA3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDWARF.dwarfDump", "libDWARF.dwarfDump\libDWARF.dwarfDump.vcxproj", "{4E0FBDB2-A1E4-4A6F-A198-CFA515364F68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33667FE0-094A-4147-B492-369927FFFAA3} = {33667FE0-094A-4147-B492-369927FFFAA3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libDWARF.dwarfGen", "libDWARF.dwarfGen\libDWARF.dwarfGen.vcxproj", "{B5B29661-6E87-4930-9EA4-8A19A004F602}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +22,14 @@ Global
 		{33667FE0-094A-4147-B492-369927FFFAA3}.Debug|Win32.Build.0 = Debug|Win32
 		{33667FE0-094A-4147-B492-369927FFFAA3}.Release|Win32.ActiveCfg = Release|Win32
 		{33667FE0-094A-4147-B492-369927FFFAA3}.Release|Win32.Build.0 = Release|Win32
+		{4E0FBDB2-A1E4-4A6F-A198-CFA515364F68}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E0FBDB2-A1E4-4A6F-A198-CFA515364F68}.Debug|Win32.Build.0 = Debug|Win32
+		{4E0FBDB2-A1E4-4A6F-A198-CFA515364F68}.Release|Win32.ActiveCfg = Release|Win32
+		{4E0FBDB2-A1E4-4A6F-A198-CFA515364F68}.Release|Win32.Build.0 = Release|Win32
+		{B5B29661-6E87-4930-9EA4-8A19A004F602}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B5B29661-6E87-4930-9EA4-8A19A004F602}.Debug|Win32.Build.0 = Debug|Win32
+		{B5B29661-6E87-4930-9EA4-8A19A004F602}.Release|Win32.ActiveCfg = Release|Win32
+		{B5B29661-6E87-4930-9EA4-8A19A004F602}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

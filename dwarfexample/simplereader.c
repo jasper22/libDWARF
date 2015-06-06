@@ -74,7 +74,7 @@
 #include <sys/stat.h>  /* For open() */
 #include <fcntl.h>     /* For open() */
 #include <stdlib.h>     /* For exit() */
-#include <unistd.h>     /* For close() */
+//#include <unistd.h>     /* For close() */
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>

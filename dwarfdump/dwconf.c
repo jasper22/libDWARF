@@ -31,6 +31,7 @@
 #include "globals.h"
 #include "dwarf.h"
 #include "libdwarf.h"
+#define MAX_PATH 260
 
 #include <ctype.h>
 #include "dwconf.h"

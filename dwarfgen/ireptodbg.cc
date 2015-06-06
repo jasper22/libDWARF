@@ -28,7 +28,7 @@
 // ireptodbg.cc
 
 #include "config.h"
-#include <unistd.h>
+#include <io.h>		//#include <unistd.h>
 #include <stdlib.h> // for exit
 #include <iostream>
 #include <string>

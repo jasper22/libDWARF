@@ -195,6 +195,9 @@
     <ClCompile Include="..\libdwarf\common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\libdwarf\dwarf_names.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libdwarf\pro_section.h">
@@ -354,6 +357,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\libdwarf\libdwarf.swig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libdwarf\dwarf_names.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libdwarf\dwarf_names_enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libdwarf\dwarf_names_new.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

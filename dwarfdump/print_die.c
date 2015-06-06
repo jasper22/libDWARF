@@ -4233,8 +4233,8 @@ show_form_itself(int local_show_form,
     }
 }
 
-#include "tmp-ta-table.c"
-#include "tmp-ta-ext-table.c"
+//#include "tmp-ta-table.c"
+//#include "tmp-ta-ext-table.c"
 
 static int
 legal_tag_attr_combination(Dwarf_Half tag, Dwarf_Half attr)

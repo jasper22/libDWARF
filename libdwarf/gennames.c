@@ -29,7 +29,7 @@
 #include <errno.h>   /* For errno declaration. */
 #include <ctype.h>
 #include <string.h>
-//#include <unistd.h>
+#include <io.h>	//#include <unistd.h>
 #include "dwarf.h"
 #include "common.h"
 #include "dwgetopt.h"

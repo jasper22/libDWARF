@@ -31,7 +31,7 @@
 // an object intended to hold all the dwarf data.
 
 #include "config.h"
-#include <unistd.h>
+#include <io.h>	//<unistd.h>
 #include <stdlib.h> // for exit
 #include <iostream>
 #include <string>

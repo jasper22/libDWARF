@@ -33,6 +33,7 @@
     <ClCompile Include="..\libdwarf\dwarf_line2.c" />
     <ClCompile Include="..\libdwarf\dwarf_loc.c" />
     <ClCompile Include="..\libdwarf\dwarf_macro.c" />
+    <ClCompile Include="..\libdwarf\dwarf_names.c" />
     <ClCompile Include="..\libdwarf\dwarf_original_elf_init.c" />
     <ClCompile Include="..\libdwarf\dwarf_print_lines.c" />
     <ClCompile Include="..\libdwarf\dwarf_pubtypes.c" />
@@ -93,6 +94,9 @@
     <ClInclude Include="..\libdwarf\dwarf_line.h" />
     <ClInclude Include="..\libdwarf\dwarf_loc.h" />
     <ClInclude Include="..\libdwarf\dwarf_macro.h" />
+    <ClInclude Include="..\libdwarf\dwarf_names.h" />
+    <ClInclude Include="..\libdwarf\dwarf_names_enum.h" />
+    <ClInclude Include="..\libdwarf\dwarf_names_new.h" />
     <ClInclude Include="..\libdwarf\dwarf_opaque.h" />
     <ClInclude Include="..\libdwarf\dwarf_reloc_arm.h" />
     <ClInclude Include="..\libdwarf\dwarf_reloc_mips.h" />

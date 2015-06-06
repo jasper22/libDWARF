@@ -55,7 +55,8 @@
 //         Default is -1 which won't match anything.
 
 #include "config.h"
-#include <unistd.h>
+#include <io.h>		//#include <unistd.h>
+#include <stdint.h>
 #include <stdlib.h> // for exit
 #include <iostream>
 #include <sstream>
@@ -316,7 +317,7 @@ setinput(enum  WhichInputSource *src,
 }
 
 int
-main(int argc, char **argv)
+_tmain(int argc, char **argv)
 {
     try {
         int opt;
@@ -424,7 +425,7 @@ main(int argc, char **argv)
 static void
 write_object_file(Dwarf_P_Debug dbg, IRepresentation &irep)
 {
-    int mode =  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+	int mode = S_IWRITE | S_IREAD;	//  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
     int fd = open(outfile.c_str(),O_WRONLY|O_CREAT|O_TRUNC, mode);
     if(fd < 0 ) {
         cerr << "dwarfgen: Unable to open " << outfile <<
