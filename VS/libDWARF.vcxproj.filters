@@ -374,5 +374,8 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="..\.gitignore" />
+    <None Include="Source.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

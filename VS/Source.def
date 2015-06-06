@@ -1,0 +1,3 @@
+LIBRARY libDWARF.dll
+EXPORTS
+	dwarf_init
