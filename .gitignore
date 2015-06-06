@@ -212,3 +212,4 @@ VS/Debug/*.obj
 *.lastbuildstate
 *.pdb
 *.lastbuildstate
+VS/Debug/
