@@ -447,7 +447,7 @@
 #define DW_DLX_NO_EH_OFFSET         (-1LL)
 #define DW_DLX_EH_OFFSET_UNAVAILABLE  (-2LL)
 #define DWARF_DRD_BUFFER_VERSION 2
-
+#define NUM_DEBUG_SECTIONS      16
 
 
 
@@ -638,13 +638,33 @@ typedef struct Dwarf_Gdbindex_s*   Dwarf_Gdbindex;
 struct Dwarf_Xu_Index_Header_s;
 typedef struct Dwarf_Xu_Index_Header_s* Dwarf_Xu_Index_Header;
 typedef struct Dwarf_P_Debug_s*       Dwarf_P_Debug;
-typedef struct Dwarf_P_Die_s*         Dwarf_P_Die;
 typedef struct Dwarf_P_Attribute_s*   Dwarf_P_Attribute;
 typedef struct Dwarf_P_Fde_s*         Dwarf_P_Fde;
 typedef struct Dwarf_P_Expr_s*        Dwarf_P_Expr;
 typedef Dwarf_Unsigned                Dwarf_Tag;
 typedef void*        Dwarf_Ptr;          /* host machine pointer */
 typedef void(*Dwarf_Handler)(Dwarf_Error /*error*/, Dwarf_Ptr /*errarg*/);
+typedef struct Dwarf_P_Section_Data_s *Dwarf_P_Section_Data;
+typedef struct Dwarf_P_Inc_Dir_s *Dwarf_P_Inc_Dir;
+typedef struct Dwarf_P_F_Entry_s *Dwarf_P_F_Entry;
+typedef struct Dwarf_P_Cie_s *Dwarf_P_Cie;
+typedef struct Dwarf_P_Line_s *Dwarf_P_Line;
+typedef struct Dwarf_P_Simple_nameentry_s *Dwarf_P_Simple_nameentry;
+typedef struct Dwarf_P_Simple_name_header_s *Dwarf_P_Simple_name_header;
+typedef struct Dwarf_P_Arange_s *Dwarf_P_Arange;
+typedef struct Dwarf_P_Per_Reloc_Sect_s *Dwarf_P_Per_Reloc_Sect;
+
+
+struct Dwarf_P_Simple_name_header_s {
+	Dwarf_P_Simple_nameentry sn_head;
+	Dwarf_P_Simple_nameentry sn_tail;
+	Dwarf_Signed sn_count;
+
+	/*  Length that will be generated, not counting fixed header or
+	trailer */
+	Dwarf_Signed sn_net_len;
+};
+
 
 struct Dwarf_Debug_Fission_Per_CU_s  {
 	const char   * pcu_type;
@@ -728,6 +748,175 @@ enum Dwarf_augmentation_type {
 																								   for details. */
 	aug_unknown,      /* Unknown augmentation, we cannot do much. */
 	aug_past_last
+};
+
+typedef struct memory_list_s {
+	struct memory_list_s *prev;
+	struct memory_list_s *next;
+} memory_list_t;
+
+enum dwarf_sn_kind {
+	dwarf_snk_pubname,  /* .debug_pubnames */
+	dwarf_snk_funcname,  /* SGI extension. */
+	dwarf_snk_weakname,  /* SGI extension. */
+	dwarf_snk_typename,  /* SGI extension. */
+	dwarf_snk_varname,   /* SGI extension. */
+	dwarf_snk_pubtype,   /* .debug_pubtypes */
+	dwarf_snk_entrycount /* this one must be last */
+};
+
+typedef int(*_dwarf_pro_reloc_name_func_ptr) (Dwarf_P_Debug dbg,
+	int sec_index,
+	Dwarf_Unsigned offset,/* r_offset */
+	Dwarf_Unsigned symidx,
+	enum Dwarf_Rel_Type type,
+	int reltarget_length);
+
+typedef int(*_dwarf_pro_transform_relocs_func_ptr) (Dwarf_P_Debug dbg,
+	Dwarf_Signed *
+	new_sec_count);
+
+struct Dwarf_P_Per_Reloc_Sect_s {
+	unsigned long pr_reloc_total_count;
+	unsigned long pr_slots_per_block_to_alloc;
+	int pr_sect_num_of_reloc_sect;
+	struct Dwarf_P_Relocation_Block_s *pr_first_block;
+	struct Dwarf_P_Relocation_Block_s *pr_last_block;
+	unsigned long pr_block_count;
+};
+
+struct Dwarf_P_Marker_s {
+	Dwarf_Unsigned ma_marker;
+	Dwarf_Unsigned ma_offset;
+};
+
+typedef struct Dwarf_P_Marker_s * Dwarf_P_Marker;
+
+struct Dwarf_P_String_Attr_s {
+	Dwarf_Unsigned        sa_offset;
+	Dwarf_Unsigned        sa_nbytes;
+};
+
+typedef struct Dwarf_P_String_Attr_s  * Dwarf_P_String_Attr;
+
+struct Dwarf_P_Per_Sect_String_Attrs_s {
+	int sect_sa_section_number;
+	unsigned sect_sa_n_alloc;
+	unsigned sect_sa_n_used;
+	Dwarf_P_String_Attr sect_sa_list;
+};
+
+typedef struct Dwarf_P_Per_Sect_String_Attrs_s *Dwarf_P_Per_Sect_String_Attrs;
+
+struct Dwarf_P_Line_Inits_s {
+	unsigned pi_version;
+	unsigned pi_default_is_stmt;
+	unsigned pi_minimum_instruction_length;
+	unsigned pi_maximum_operations_per_instruction;
+	unsigned pi_opcode_base;
+	int      pi_line_base;
+	int      pi_line_range;
+};
+
+typedef int(*Dwarf_Callback_Func)(
+	const char*     name,
+	int             size,
+	Dwarf_Unsigned  type,
+	Dwarf_Unsigned  flags,
+	Dwarf_Unsigned  link,
+	Dwarf_Unsigned  info,
+	Dwarf_Unsigned* sect_name_index,
+	void *          user_data,
+	int*            error);
+
+typedef int(*_dwarf_pro_reloc_length_func_ptr) (Dwarf_P_Debug dbg,
+												int sec_index, Dwarf_Unsigned offset,
+												Dwarf_Unsigned start_symidx,
+												Dwarf_Unsigned end_symidx,
+												enum Dwarf_Rel_Type type,
+												int reltarget_length);
+
+typedef struct Dwarf_P_Die_s*         Dwarf_P_Die;
+
+struct Dwarf_P_Die_s {
+	Dwarf_Unsigned di_offset;
+	char *di_abbrev;
+	Dwarf_Word di_abbrev_nbytes;
+	Dwarf_Tag di_tag;
+	Dwarf_P_Die di_parent;
+	Dwarf_P_Die di_child;
+	Dwarf_P_Die di_last_child;
+	Dwarf_P_Die di_left;
+	Dwarf_P_Die di_right;
+	Dwarf_P_Attribute di_attrs;
+	Dwarf_P_Attribute di_last_attr;
+	int di_n_attr;
+	Dwarf_P_Debug di_dbg;
+	Dwarf_Unsigned di_marker;
+};
+
+
+struct Dwarf_P_Debug_s {
+	int de_version_magic_number;
+	Dwarf_Handler de_errhand;
+	void *    de_user_data;
+	Dwarf_Ptr de_errarg;
+	Dwarf_Callback_Func de_callback_func;
+	Dwarf_Unsigned de_flags;
+	Dwarf_P_Section_Data de_debug_sects;
+	Dwarf_P_Section_Data de_current_active_section;
+	Dwarf_Word de_n_debug_sect;
+	Dwarf_P_F_Entry de_file_entries;
+	Dwarf_P_F_Entry de_last_file_entry;
+	Dwarf_Unsigned de_n_file_entries;
+	Dwarf_P_Inc_Dir de_inc_dirs;
+	Dwarf_P_Inc_Dir de_last_inc_dir;
+	Dwarf_Unsigned de_n_inc_dirs;
+	Dwarf_P_Line de_lines;
+	Dwarf_P_Line de_last_line;
+	Dwarf_P_Cie de_frame_cies;
+	Dwarf_P_Cie de_last_cie;
+	Dwarf_Unsigned de_n_cie;
+	Dwarf_P_Fde de_frame_fdes;
+	Dwarf_P_Fde de_last_fde;
+	Dwarf_Unsigned de_n_fde;
+	Dwarf_P_Die de_dies;
+	char *de_strings;
+	Dwarf_P_Arange de_arange;
+	Dwarf_P_Arange de_last_arange;
+	Dwarf_Sword de_arange_count;
+	struct dw_macinfo_block_s *de_first_macinfo;
+	struct dw_macinfo_block_s *de_current_macinfo;
+	Dwarf_P_Section_Data de_first_debug_sect;
+	struct Dwarf_P_Simple_name_header_s de_simple_name_headers[dwarf_snk_entrycount];
+	struct Dwarf_P_Per_Reloc_Sect_s de_reloc_sect[NUM_DEBUG_SECTIONS];
+	int de_reloc_next_to_return;
+	int de_elf_sects[NUM_DEBUG_SECTIONS];
+	Dwarf_Unsigned de_sect_name_idx[NUM_DEBUG_SECTIONS];
+	int de_offset_reloc;
+	int de_exc_reloc;
+	int de_ptr_reloc;
+	unsigned char de_irix_exc_augmentation;
+	unsigned char de_offset_size;
+	unsigned char de_pointer_size;
+	unsigned char de_relocation_record_size;
+	unsigned char de_64bit_extension;
+	int de_output_version;
+	int de_ar_data_attribute_form;
+	int de_ar_ref_attr_form;
+	_dwarf_pro_reloc_name_func_ptr de_reloc_name;
+	_dwarf_pro_reloc_length_func_ptr de_reloc_pair;
+	_dwarf_pro_transform_relocs_func_ptr de_transform_relocs_to_disk;
+	unsigned long de_compose_avail;
+	unsigned long de_compose_used_len;
+	unsigned char de_same_endian;
+	void *(*de_copy_word) (void *, const void *, size_t);
+	Dwarf_P_Marker de_markers;
+	unsigned de_marker_n_alloc;
+	unsigned de_marker_n_used;
+	int de_sect_sa_next_to_return;
+	struct Dwarf_P_Per_Sect_String_Attrs_s de_sect_string_attr[NUM_DEBUG_SECTIONS];
+	struct Dwarf_P_Line_Inits_s de_line_inits;
 };
 
 struct Dwarf_Cie_s {
@@ -1459,13 +1648,8 @@ enum Dwarf_Rel_Type {
 	dwarf_drt_second_of_length_pair
 };
 
-typedef struct Dwarf_P_Marker_s * Dwarf_P_Marker;
-struct Dwarf_P_Marker_s {
-	Dwarf_Unsigned ma_marker;
-	Dwarf_Unsigned ma_offset;
-};
-
 typedef struct Dwarf_Relocation_Data_s  * Dwarf_Relocation_Data;
+
 struct Dwarf_Relocation_Data_s {
 	unsigned char drd_type;   /* Cast to/from Dwarf_Rel_Type
 								to keep size small in struct. */
@@ -1475,13 +1659,6 @@ struct Dwarf_Relocation_Data_s {
 	Dwarf_Unsigned       drd_offset; /* Where the data to reloc is. */
 	Dwarf_Unsigned       drd_symbol_index;
 };
-
-typedef struct Dwarf_P_String_Attr_s  * Dwarf_P_String_Attr;
-struct Dwarf_P_String_Attr_s {
-	Dwarf_Unsigned        sa_offset;  /* Offset of string attribute data */
-	Dwarf_Unsigned        sa_nbytes;
-};
-
 
 typedef struct Dwarf_Debug_s*      Dwarf_Debug;
 typedef struct Dwarf_Die_s*        Dwarf_Die;
@@ -1501,9 +1678,7 @@ typedef struct Dwarf_Gdbindex_s*   Dwarf_Gdbindex;
 struct Dwarf_Xu_Index_Header_s;
 typedef struct Dwarf_Xu_Index_Header_s* Dwarf_Xu_Index_Header;
 
-
 typedef struct Dwarf_P_Debug_s*       Dwarf_P_Debug;
-typedef struct Dwarf_P_Die_s*         Dwarf_P_Die;
 typedef struct Dwarf_P_Attribute_s*   Dwarf_P_Attribute;
 typedef struct Dwarf_P_Fde_s*         Dwarf_P_Fde;
 typedef struct Dwarf_P_Expr_s*        Dwarf_P_Expr;
@@ -2713,35 +2888,19 @@ int dwarf_init2(char* fileName,
 
 	void dwarf_dealloc(Dwarf_Debug dbg, void* space, Dwarf_Unsigned type);
 
-
-	/* DWARF Producer Interface */
-
-	/*  New form June, 2011. Adds user_data argument. */
-	typedef int(*Dwarf_Callback_Func)(
-		const char*     name,
-		int             size,
-		Dwarf_Unsigned  type,
-		Dwarf_Unsigned  flags,
-		Dwarf_Unsigned  link,
-		Dwarf_Unsigned  info,
-		Dwarf_Unsigned* sect_name_index,
-		void *          user_data,
-		int*            error);
-
 	int dwarf_producer_init(
-		Dwarf_Unsigned        /*flags*/,
-		Dwarf_Callback_Func   /*func*/,
-		Dwarf_Handler         /*errhand*/,
-		Dwarf_Ptr             /*errarg*/,
-		void *                /*user_data*/,
-		const char *isa_name, /* See isa/abi names in pro_init.c */
-		const char *dwarf_version, /* V2 V3 V4 or V5. */
-		const char *extra,    /* Extra input strings, comma separated. */
-		Dwarf_P_Debug *,      /* dbg_returned */
-		Dwarf_Error *         /*error*/);
+		Dwarf_Unsigned        flags,
+		Dwarf_Callback_Func   func,
+		Dwarf_Handler         errhand,
+		Dwarf_Ptr             errarg,
+		void *                user_data,
+		const char *isa_name, 
+		const char *dwarf_version, 
+		const char *extra,
+		Dwarf_P_Debug * dbg_returned ,
+		Dwarf_Error *   error);
 
-	Dwarf_Signed dwarf_transform_to_disk_form(Dwarf_P_Debug /*dbg*/,
-		Dwarf_Error*     /*error*/);
+	Dwarf_Signed dwarf_transform_to_disk_form(Dwarf_P_Debug dbg, Dwarf_Error* error);
 
 	Dwarf_Ptr dwarf_get_section_bytes(Dwarf_P_Debug /*dbg*/,
 		Dwarf_Signed     /*dwarf_section*/,
