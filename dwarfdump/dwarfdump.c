@@ -101,34 +101,34 @@ static const char * do_uri_translation(const char *s,
     const char *context);
 static void reset_overall_CU_error_data();
 
-boolean info_flag = FALSE;
-boolean use_old_dwarf_loclist = FALSE;  /* This so both dwarf_loclist()
+boolean2 info_flag = FALSE;
+boolean2 use_old_dwarf_loclist = FALSE;  /* This so both dwarf_loclist()
     and dwarf_loclist_n() can be
     tested. Defaults to new
     dwarf_loclist_n() */
 
-boolean line_flag = FALSE;
-boolean line_print_pc = TRUE;    /* Print <pc> addresses. */
-static boolean abbrev_flag = FALSE;
-static boolean frame_flag = FALSE;      /* .debug_frame section. */
-static boolean eh_frame_flag = FALSE;   /* GNU .eh_frame section. */
-static boolean pubnames_flag = FALSE;
-static boolean macinfo_flag = FALSE;
-static boolean loc_flag = FALSE;
-static boolean aranges_flag = FALSE; /* .debug_aranges section. */
-static boolean ranges_flag = FALSE; /* .debug_ranges section. */
-static boolean string_flag = FALSE;
-static boolean reloc_flag = FALSE;
-static boolean static_func_flag = FALSE;
-static boolean static_var_flag = FALSE;
-static boolean type_flag = FALSE;
-static boolean weakname_flag = FALSE;
-static boolean header_flag = FALSE; /* Control printing of Elf header. */
+boolean2 line_flag = FALSE;
+boolean2 line_print_pc = TRUE;    /* Print <pc> addresses. */
+static boolean2 abbrev_flag = FALSE;
+static boolean2 frame_flag = FALSE;      /* .debug_frame section. */
+static boolean2 eh_frame_flag = FALSE;   /* GNU .eh_frame section. */
+static boolean2 pubnames_flag = FALSE;
+static boolean2 macinfo_flag = FALSE;
+static boolean2 loc_flag = FALSE;
+static boolean2 aranges_flag = FALSE; /* .debug_aranges section. */
+static boolean2 ranges_flag = FALSE; /* .debug_ranges section. */
+static boolean2 string_flag = FALSE;
+static boolean2 reloc_flag = FALSE;
+static boolean2 static_func_flag = FALSE;
+static boolean2 static_var_flag = FALSE;
+static boolean2 type_flag = FALSE;
+static boolean2 weakname_flag = FALSE;
+static boolean2 header_flag = FALSE; /* Control printing of Elf header. */
 
 /* Control printing of gdb_index section.*/
-static boolean gdbindex_flag = FALSE;
+static boolean2 gdbindex_flag = FALSE;
 
-boolean producer_children_flag = FALSE;   /* List of CUs per compiler */
+boolean2 producer_children_flag = FALSE;   /* List of CUs per compiler */
 
 /* Bitmap for relocations. See globals.h for DW_SECTION_REL_DEBUG_RANGES etc.*/
 static unsigned reloc_map = 0;
@@ -138,46 +138,46 @@ static unsigned section_map = 0;
     be incremented with -v but not decremented. */
 int verbose = 0;
 
-boolean dense = FALSE;
-boolean ellipsis = FALSE;
-boolean show_global_offsets = FALSE; /* Show global and relative offsets */
-boolean show_form_used = FALSE;
-boolean display_offsets = TRUE;  /* Emit offsets */
+boolean2 dense = FALSE;
+boolean2 ellipsis = FALSE;
+boolean2 show_global_offsets = FALSE; /* Show global and relative offsets */
+boolean2 show_form_used = FALSE;
+boolean2 display_offsets = TRUE;  /* Emit offsets */
 
-boolean check_abbrev_code = FALSE;
-boolean check_pubname_attr = FALSE;
-boolean check_reloc_offset = FALSE;
-boolean check_attr_tag = FALSE;
-boolean check_tag_tree = FALSE;
-boolean check_type_offset = FALSE;
-boolean check_decl_file = FALSE;
-boolean check_lines = FALSE;
-boolean check_fdes = FALSE;
-boolean check_ranges = FALSE;
-boolean check_aranges = FALSE;
-boolean check_harmless = FALSE;
-boolean check_abbreviations = FALSE;
-boolean check_dwarf_constants = FALSE;
-boolean check_di_gaps = FALSE;
-boolean check_forward_decl = FALSE;
-boolean check_self_references = FALSE;
-boolean check_attr_encoding = FALSE;   /* Attributes encoding */
-boolean generic_1200_regs = FALSE;
-boolean suppress_check_extensions_tables = FALSE;
-boolean check_duplicated_attributes = FALSE;
+boolean2 check_abbrev_code = FALSE;
+boolean2 check_pubname_attr = FALSE;
+boolean2 check_reloc_offset = FALSE;
+boolean2 check_attr_tag = FALSE;
+boolean2 check_tag_tree = FALSE;
+boolean2 check_type_offset = FALSE;
+boolean2 check_decl_file = FALSE;
+boolean2 check_lines = FALSE;
+boolean2 check_fdes = FALSE;
+boolean2 check_ranges = FALSE;
+boolean2 check_aranges = FALSE;
+boolean2 check_harmless = FALSE;
+boolean2 check_abbreviations = FALSE;
+boolean2 check_dwarf_constants = FALSE;
+boolean2 check_di_gaps = FALSE;
+boolean2 check_forward_decl = FALSE;
+boolean2 check_self_references = FALSE;
+boolean2 check_attr_encoding = FALSE;   /* Attributes encoding */
+boolean2 generic_1200_regs = FALSE;
+boolean2 suppress_check_extensions_tables = FALSE;
+boolean2 check_duplicated_attributes = FALSE;
 /* lots of checks make no sense on a dwp debugfission object. */
-boolean suppress_checking_on_dwp = FALSE;
+boolean2 suppress_checking_on_dwp = FALSE;
 
 /* suppress_nested_name_search is a band-aid.
    A workaround. A real fix for N**2 behavior is needed.
 */
-boolean suppress_nested_name_search = FALSE;
-static boolean uri_options_translation = TRUE;
-static boolean do_print_uri_in_input = TRUE;
+boolean2 suppress_nested_name_search = FALSE;
+static boolean2 uri_options_translation = TRUE;
+static boolean2 do_print_uri_in_input = TRUE;
 
 /* Print global (unique) error messages */
-boolean print_unique_errors = FALSE;
-boolean found_error_message = FALSE;
+boolean2 print_unique_errors = FALSE;
+boolean2 found_error_message = FALSE;
 
 /* break_after_n_units is mainly for testing.
    It enables easy limiting of output size/running time
@@ -189,19 +189,19 @@ boolean found_error_message = FALSE;
 */
 int break_after_n_units = INT_MAX;
 
-boolean check_names = FALSE;
-boolean check_verbose_mode = TRUE; /* During '-k' mode, display errors */
-boolean check_frames = FALSE;
-boolean check_frames_extended = FALSE;    /* Extensive frames check */
-boolean check_locations = FALSE;          /* Location list check */
+boolean2 check_names = FALSE;
+boolean2 check_verbose_mode = TRUE; /* During '-k' mode, display errors */
+boolean2 check_frames = FALSE;
+boolean2 check_frames_extended = FALSE;    /* Extensive frames check */
+boolean2 check_locations = FALSE;          /* Location list check */
 
-boolean print_usage_tag_attr = FALSE;      /* Print basic usage */
-boolean print_usage_tag_attr_full = FALSE; /* Print full usage */
+boolean2 print_usage_tag_attr = FALSE;      /* Print basic usage */
+boolean2 print_usage_tag_attr_full = FALSE; /* Print full usage */
 
-static boolean check_all_compilers = TRUE;
-static boolean check_snc_compiler = FALSE; /* Check SNC compiler */
-static boolean check_gcc_compiler = FALSE;
-static boolean print_summary_all = FALSE;
+static boolean2 check_all_compilers = TRUE;
+static boolean2 check_snc_compiler = FALSE; /* Check SNC compiler */
+static boolean2 check_gcc_compiler = FALSE;
+static boolean2 print_summary_all = FALSE;
 
 #define COMPILER_TABLE_MAX 100
 typedef struct anc {
@@ -214,7 +214,7 @@ typedef struct anc {
     categories (see -k option). */
 typedef struct {
     const char *name;
-    boolean verified;
+    boolean2 verified;
     a_name_chain *cu_list;
     a_name_chain *cu_last;
     Dwarf_Check_Result results[LAST_CATEGORY];
@@ -249,10 +249,10 @@ static void PRINT_CHECK_RESULT(char *str,
 /* The check and print flags here make it easy to
    allow check-only or print-only.  We no longer support
    check-and-print in a single run.  */
-boolean do_check_dwarf = FALSE;
-boolean do_print_dwarf = FALSE;
-boolean check_show_results = FALSE;  /* Display checks results. */
-boolean record_dwarf_error = FALSE;  /* A test has failed, this
+boolean2 do_check_dwarf = FALSE;
+boolean2 do_print_dwarf = FALSE;
+boolean2 check_show_results = FALSE;  /* Display checks results. */
+boolean2 record_dwarf_error = FALSE;  /* A test has failed, this
     is normally set FALSE shortly after being set TRUE, it is
     a short-range hint we should print something we might not
     otherwise print (under the circumstances). */
@@ -265,15 +265,15 @@ char PU_name[COMPILE_UNIT_NAME_LEN];
 char CU_name[COMPILE_UNIT_NAME_LEN];
 char CU_producer[COMPILE_UNIT_NAME_LEN];
 
-boolean seen_PU = FALSE;              /* Detected a PU */
-boolean seen_CU = FALSE;              /* Detected a CU */
-boolean need_CU_name = TRUE;          /* Need CU name */
-boolean need_CU_base_address = TRUE;  /* Need CU Base address */
-boolean need_CU_high_address = TRUE;  /* Need CU High address */
-boolean need_PU_valid_code = TRUE;    /* Need PU valid code */
+boolean2 seen_PU = FALSE;              /* Detected a PU */
+boolean2 seen_CU = FALSE;              /* Detected a CU */
+boolean2 need_CU_name = TRUE;          /* Need CU name */
+boolean2 need_CU_base_address = TRUE;  /* Need CU Base address */
+boolean2 need_CU_high_address = TRUE;  /* Need CU High address */
+boolean2 need_PU_valid_code = TRUE;    /* Need PU valid code */
 
-boolean seen_PU_base_address = FALSE; /* Detected a Base address for PU */
-boolean seen_PU_high_address = FALSE; /* Detected a High address for PU */
+boolean2 seen_PU_base_address = FALSE; /* Detected a Base address for PU */
+boolean2 seen_PU_high_address = FALSE; /* Detected a High address for PU */
 Dwarf_Addr PU_base_address = 0;       /* PU Base address */
 Dwarf_Addr PU_high_address = 0;       /* PU High address */
 
@@ -292,19 +292,19 @@ Dwarf_Addr elf_max_address = 0;       /* Largest representable address offset */
 Dwarf_Half elf_address_size = 0;      /* Target pointer size */
 
 /* Display parent/children when in wide format? */
-boolean display_parent_tree = FALSE;
-boolean display_children_tree = FALSE;
+boolean2 display_parent_tree = FALSE;
+boolean2 display_children_tree = FALSE;
 int stop_indent_level = 0;
 
 /* Print search results in wide format? */
-boolean search_wide_format = FALSE;
+boolean2 search_wide_format = FALSE;
 /* -S option: strings for 'any' and 'match' */
-boolean search_is_on = FALSE;
+boolean2 search_is_on = FALSE;
 const char *search_any_text = 0;
 const char *search_match_text = 0;
 const char *search_regex_text = 0;
 int search_occurrences = 0;
-boolean search_print_results = FALSE;
+boolean2 search_print_results = FALSE;
 #ifdef HAVE_REGEX
 /* -S option: the compiled_regex */
 regex_t search_re;
@@ -316,7 +316,7 @@ static void release_unique_errors_table();
 #ifdef TESTING
 static void dump_unique_errors_table();
 #endif
-static boolean add_to_unique_errors_table();
+static boolean2 add_to_unique_errors_table();
 
 /*  These configure items are for the
     frame data.  We're flexible in
@@ -351,7 +351,7 @@ static struct dwconf_s config_file_data;
 static const char *output_file = 0;
 
 char cu_name[BUFSIZ];
-boolean cu_name_flag = FALSE;
+boolean2 cu_name_flag = FALSE;
 
 Dwarf_Error err;
 
@@ -407,18 +407,18 @@ open_a_file(const char * name)
     /* Set to a file number that cannot be legal. */
     int f = -1;
 
-#if defined(__CYGWIN__) || defined(WIN32)
-    /*  It is not possible to share file handles
-        between applications or DLLs. Each application has its own
-        file-handle table. For two applications to use the same file
-        using a DLL, they must both open the file individually.
-        Let the 'libelf' dll to open and close the file.  */
-
-    /* For WIN32 open the file as binary */
-    f = elf_open(name, O_RDONLY | O_BINARY);
-#else
+////#if defined(__CYGWIN__) || defined(WIN32)
+////    /*  It is not possible to share file handles
+////        between applications or DLLs. Each application has its own
+////        file-handle table. For two applications to use the same file
+////        using a DLL, they must both open the file individually.
+////        Let the 'libelf' dll to open and close the file.  */
+////
+////    /* For WIN32 open the file as binary */
+////    f = elf_open(name, O_RDONLY | O_BINARY);
+////#else
     f = open(name, O_RDONLY);
-#endif
+////#endif
     return f;
 
 }
@@ -637,6 +637,12 @@ print_any_harmless_errors(Dwarf_Debug dbg)
     }
 }
 
+/// <summary>
+/// Print_object_headers the specified elf.
+/// </summary>
+/// <param name="elf">The elf.</param>
+/// <param name="dbg">The debug.</param>
+/// <param name="local_section_map">The local_section_map.</param>
 static void
 print_object_header(Elf *elf,Dwarf_Debug dbg,unsigned local_section_map)
 {
@@ -680,7 +686,7 @@ print_object_header(Elf *elf,Dwarf_Debug dbg,unsigned local_section_map)
 #ifdef WIN32
     /*  Standard libelf has no function generating the names of the
         encodings, but this libelf apparently does. */
-    Elf_Ehdr_Literal eh_literals;
+//    Elf_Ehdr_Literal eh_literals;
     Elf32_Ehdr *eh32;
 #ifdef HAVE_ELF64_GETEHDR
     Elf64_Ehdr *eh64;
@@ -689,24 +695,24 @@ print_object_header(Elf *elf,Dwarf_Debug dbg,unsigned local_section_map)
     eh32 = elf32_getehdr(elf);
     if (eh32) {
         /* Get literal strings for header fields */
-        elf32_gethdr_literals(eh32,&eh_literals);
+        //elf32_gethdr_literals(eh32,&eh_literals);
         /* Print 32-bit obj header */
         printf("\nObject Header:\ne_ident:\n");
-        printf("  File ID       = %s\n",eh_literals.e_ident_file_id);
-        printf("  File class    = %02x (%s)\n",
-            eh32->e_ident[EI_CLASS],eh_literals.e_ident_file_class);
-        printf("  Data encoding = %02x (%s)\n",
-            eh32->e_ident[EI_DATA],eh_literals.e_ident_data_encoding);
-        printf("  File version  = %02x (%s)\n",
-            eh32->e_ident[EI_VERSION],eh_literals.e_ident_file_version);
-        printf("  OS ABI        = %02x (%s) (%s)\n",eh32->e_ident[EI_OSABI],
-            eh_literals.e_ident_os_abi_s,eh_literals.e_ident_os_abi_l);
-        printf("  ABI version   = %02x (%s)\n",
-            eh32->e_ident[EI_ABIVERSION], eh_literals.e_ident_abi_version);
-        printf("e_type     : 0x%x (%s)\n",
-            eh32->e_type,eh_literals.e_type);
-        printf("e_machine  : 0x%x (%s) (%s)\n",eh32->e_machine,
-            eh_literals.e_machine_s,eh_literals.e_machine_l);
+        //printf("  File ID       = %s\n",eh_literals.e_ident_file_id);
+        //printf("  File class    = %02x (%s)\n",
+        //    eh32->e_ident[EI_CLASS],eh_literals.e_ident_file_class);
+        //printf("  Data encoding = %02x (%s)\n",
+        //    eh32->e_ident[EI_DATA],eh_literals.e_ident_data_encoding);
+        //printf("  File version  = %02x (%s)\n",
+        //    eh32->e_ident[EI_VERSION],eh_literals.e_ident_file_version);
+        //printf("  OS ABI        = %02x (%s) (%s)\n",eh32->e_ident[EI_OSABI],
+        //    eh_literals.e_ident_os_abi_s,eh_literals.e_ident_os_abi_l);
+        //printf("  ABI version   = %02x (%s)\n",
+        //    eh32->e_ident[EI_ABIVERSION], eh_literals.e_ident_abi_version);
+        //printf("e_type     : 0x%x (%s)\n",
+        //    eh32->e_type,eh_literals.e_type);
+        //printf("e_machine  : 0x%x (%s) (%s)\n",eh32->e_machine,
+        //    eh_literals.e_machine_s,eh_literals.e_machine_l);
         printf("e_version  : 0x%x\n", eh32->e_version);
         printf("e_entry    : 0x%" DW_PR_XZEROS DW_PR_DUx "\n",eh32->e_entry);
         printf("e_phoff    : 0x%" DW_PR_XZEROS DW_PR_DUx "\n",eh32->e_phoff);
@@ -725,24 +731,24 @@ print_object_header(Elf *elf,Dwarf_Debug dbg,unsigned local_section_map)
         eh64 = elf64_getehdr(elf);
         if (eh64) {
             /* Get literal strings for header fields */
-            elf64_gethdr_literals(eh64,&eh_literals);
+            //elf64_gethdr_literals(eh64,&eh_literals);
             /* Print 64-bit obj header */
             printf("\nObject Header:\ne_ident:\n");
-            printf("  File ID       = %s\n",eh_literals.e_ident_file_id);
-            printf("  File class    = %02x (%s)\n",
-                eh64->e_ident[EI_CLASS],eh_literals.e_ident_file_class);
-            printf("  Data encoding = %02x (%s)\n",
-                eh64->e_ident[EI_DATA],eh_literals.e_ident_data_encoding);
-            printf("  File version  = %02x (%s)\n",
-                eh64->e_ident[EI_VERSION],eh_literals.e_ident_file_version);
-            printf("  OS ABI        = %02x (%s) (%s)\n",eh64->e_ident[EI_OSABI],
-                eh_literals.e_ident_os_abi_s,eh_literals.e_ident_os_abi_l);
-            printf("  ABI version   = %02x (%s)\n",
-                eh64->e_ident[EI_ABIVERSION], eh_literals.e_ident_abi_version);
-            printf("e_type     : 0x%x (%s)\n",
-                eh64->e_type,eh_literals.e_type);
-            printf("e_machine  : 0x%x (%s) (%s)\n",eh64->e_machine,
-                eh_literals.e_machine_s,eh_literals.e_machine_l);
+            //printf("  File ID       = %s\n",eh_literals.e_ident_file_id);
+            //printf("  File class    = %02x (%s)\n",
+            //    eh64->e_ident[EI_CLASS],eh_literals.e_ident_file_class);
+            //printf("  Data encoding = %02x (%s)\n",
+            //    eh64->e_ident[EI_DATA],eh_literals.e_ident_data_encoding);
+            //printf("  File version  = %02x (%s)\n",
+            //    eh64->e_ident[EI_VERSION],eh_literals.e_ident_file_version);
+            //printf("  OS ABI        = %02x (%s) (%s)\n",eh64->e_ident[EI_OSABI],
+            //    eh_literals.e_ident_os_abi_s,eh_literals.e_ident_os_abi_l);
+            //printf("  ABI version   = %02x (%s)\n",
+            //    eh64->e_ident[EI_ABIVERSION], eh_literals.e_ident_abi_version);
+            //printf("e_type     : 0x%x (%s)\n",
+            //    eh64->e_type,eh_literals.e_type);
+            //printf("e_machine  : 0x%x (%s) (%s)\n",eh64->e_machine,
+            //    eh_literals.e_machine_s,eh_literals.e_machine_l);
             printf("e_version  : 0x%x\n", eh64->e_version);
             printf("e_entry    : 0x%" DW_PR_XZEROS DW_PR_DUx "\n",eh64->e_entry);
             printf("e_phoff    : 0x%" DW_PR_XZEROS DW_PR_DUx "\n",eh64->e_phoff);
@@ -773,7 +779,7 @@ print_object_header(Elf *elf,Dwarf_Debug dbg,unsigned local_section_map)
         Dwarf_Addr section_addr = 0;
         Dwarf_Unsigned section_size = 0;
         Dwarf_Error error = 0;
-        boolean print_it = FALSE;
+        boolean2 print_it = FALSE;
         Dwarf_Unsigned total_bytes = 0;
         int printed_sections = 0;
 
@@ -1468,7 +1474,7 @@ process_args(int argc, char *argv[])
 {
     extern int optind;
     int c = 0;
-    boolean usage_error = FALSE;
+    boolean2 usage_error = FALSE;
     int oarg = 0;
 
     program_name = argv[0];
@@ -1661,7 +1667,7 @@ process_args(int argc, char *argv[])
             /* -S option: strings for 'any' and 'match' */
             {
                 const char *tempstr = 0;
-                boolean err = TRUE;
+                boolean2 err = TRUE;
                 search_is_on = TRUE;
                 /* 'v' option, to print number of occurrences */
                 /* -S[v]match|any|regex=text*/
@@ -2144,7 +2150,7 @@ print_error_and_continue(Dwarf_Debug dbg,
     be skipped as the DW_AT_name of the CU
     does not match the command-line-supplied
     cu name.  Else returns false.*/
-boolean
+boolean2
 should_skip_this_cu(Dwarf_Debug dbg, Dwarf_Die cu_die, Dwarf_Error err)
 {
     Dwarf_Half tag = 0;
@@ -2495,12 +2501,12 @@ tag_specific_checks_setup(Dwarf_Half val,int die_indent_level)
 }
 
 /* Indicates if the current CU is a target */
-static boolean current_cu_is_checked_compiler = TRUE;
+static boolean2 current_cu_is_checked_compiler = TRUE;
 
 /*  Are we checking for errors from the
     compiler of the current compilation unit?
 */
-boolean
+boolean2
 checking_this_compiler()
 {
     /*  This flag has been update by 'update_compiler_target()'
@@ -2552,8 +2558,8 @@ update_compiler_target(const char *producer_name)
         }
     } else {
         /* Internally the strings do not include quotes */
-        boolean snc_compiler = hasprefix(CU_producer,"SN")? TRUE : FALSE;
-        boolean gcc_compiler = hasprefix(CU_producer,"GNU")?TRUE : FALSE;
+        boolean2 snc_compiler = hasprefix(CU_producer,"SN")? TRUE : FALSE;
+        boolean2 gcc_compiler = hasprefix(CU_producer,"GNU")?TRUE : FALSE;
         current_cu_is_checked_compiler = check_all_compilers ||
             (snc_compiler && check_snc_compiler) ||
             (gcc_compiler && check_gcc_compiler) ;
@@ -2643,7 +2649,7 @@ reset_overall_CU_error_data()
 }
 
 
-static boolean
+static boolean2
 cu_data_is_set()
 {
     if (strcmp(CU_name,default_cu_producer) ||
@@ -2773,7 +2779,7 @@ void release_unique_errors_table()
 }
 
 /*  Returns TRUE if the text is already in the set; otherwise FALSE */
-boolean add_to_unique_errors_table(string error_text)
+boolean2 add_to_unique_errors_table(string error_text)
 {
     unsigned int index;
     size_t len;
@@ -2832,8 +2838,8 @@ static void
 print_dwarf_check_error(char *format,...)
 {
     static struct esb_s dwarf_error_line;
-    static boolean do_init = TRUE;
-    boolean found = FALSE;
+    static boolean2 do_init = TRUE;
+    boolean2 found = FALSE;
     string error_text = NULL;
     va_list ap;
     int netlen = 0;

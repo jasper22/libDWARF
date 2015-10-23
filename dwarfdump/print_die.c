@@ -37,12 +37,12 @@
 #include "tag_common.h"
 
 /*  Traverse a DIE and attributes to check self references */
-static boolean traverse_one_die(Dwarf_Debug dbg, Dwarf_Attribute attrib,
+static boolean2 traverse_one_die(Dwarf_Debug dbg, Dwarf_Attribute attrib,
     Dwarf_Die die, char **srcfiles,
     Dwarf_Signed cnt, int die_indent_level);
-static boolean traverse_attribute(Dwarf_Debug dbg, Dwarf_Die die,
+static boolean2 traverse_attribute(Dwarf_Debug dbg, Dwarf_Die die,
     Dwarf_Half attr, Dwarf_Attribute attr_in,
-    boolean print_information,
+    boolean2 print_information,
     char **srcfiles, Dwarf_Signed cnt,
     int die_indent_level);
 static void print_die_and_children_internal(Dwarf_Debug dbg,
@@ -65,10 +65,10 @@ static void show_form_itself(int show_form,int verbose,
     int theform, int directform, struct esb_s * str_out);
 static void print_exprloc_content(Dwarf_Debug dbg,Dwarf_Die die, Dwarf_Attribute attrib,
     int showhextoo, struct esb_s *esbp);
-static boolean print_attribute(Dwarf_Debug dbg, Dwarf_Die die,
+static boolean2 print_attribute(Dwarf_Debug dbg, Dwarf_Die die,
     Dwarf_Half attr,
     Dwarf_Attribute actual_addr,
-    boolean print_information,
+    boolean2 print_information,
     int die_indent_level, char **srcfiles,
     Dwarf_Signed cnt);
 static void get_location_list(Dwarf_Debug dbg, Dwarf_Die die,
@@ -89,7 +89,7 @@ static Dwarf_Unsigned dieprint_cu_offset = 0;
 static int dwarf_names_print_on_error = 1;
 
 static int die_stack_indent_level = 0;
-static boolean local_symbols_already_began = FALSE;
+static boolean2 local_symbols_already_began = FALSE;
 
 typedef const char *(*encoding_type_func) (unsigned,int doprintingonerr);
 
@@ -205,7 +205,7 @@ struct die_stack_data_s {
         when we create the stack entry.
         If the sibling attribute absent we never know. */
     Dwarf_Off sibling_die_globaloffset_;
-    boolean already_printed_;
+    boolean2 already_printed_;
 };
 struct die_stack_data_s empty_stack_entry;
 
@@ -397,7 +397,6 @@ print_cu_hdr_cudie(Dwarf_Debug dbg,
 #endif
     printf(":\n");
 }
-
 
 static  void
 print_cu_hdr_std(Dwarf_Unsigned cu_header_length,
@@ -746,8 +745,8 @@ print_one_die_section(Dwarf_Debug dbg,Dwarf_Bool is_info)
 static void
 print_a_die_stack(Dwarf_Debug dbg,char **srcfiles,Dwarf_Signed cnt,int lev)
 {
-    boolean print_information = TRUE;
-    boolean ignore_die_stack = FALSE;
+    boolean2 print_information = TRUE;
+    boolean2 ignore_die_stack = FALSE;
     print_one_die(dbg,die_stack[lev].die_,print_information,lev,srcfiles,cnt,
         ignore_die_stack);
 }
@@ -765,8 +764,8 @@ static void
 print_die_stack(Dwarf_Debug dbg,char **srcfiles,Dwarf_Signed cnt)
 {
     int lev = 0;
-    boolean print_information = TRUE;
-    boolean ignore_die_stack = FALSE;
+    boolean2 print_information = TRUE;
+    boolean2 ignore_die_stack = FALSE;
 
     for (lev = 0; lev <= die_stack_indent_level; ++lev)
     {
@@ -873,8 +872,8 @@ print_die_and_children_internal(Dwarf_Debug dbg,
 
         /* Here do pre-descent processing of the die. */
         {
-            boolean retry_print_on_match = FALSE;
-            boolean ignore_die_stack = FALSE;
+            boolean2 retry_print_on_match = FALSE;
+            boolean2 ignore_die_stack = FALSE;
             retry_print_on_match = print_one_die(dbg, in_die,
                 print_as_info_or_cu(),
                 die_stack_indent_level, srcfiles, cnt,ignore_die_stack);
@@ -1046,12 +1045,12 @@ print_die_and_children_internal(Dwarf_Debug dbg,
 
 /*  If print_information is FALSE, check the TAG and if it is a CU die
     print the information anyway. */
-boolean
+boolean2
 print_one_die(Dwarf_Debug dbg, Dwarf_Die die,
-    boolean print_information,
+    boolean2 print_information,
     int die_indent_level,
     char **srcfiles, Dwarf_Signed cnt,
-    boolean ignore_die_stack)
+    boolean2 ignore_die_stack)
 {
     Dwarf_Signed i = 0;
     Dwarf_Signed j = 0;
@@ -1065,7 +1064,7 @@ print_one_die(Dwarf_Debug dbg, Dwarf_Die die,
     int ores = 0;
     int atres = 0;
     int abbrev_code = dwarf_die_abbrev_code(die);
-    boolean attribute_matched = FALSE;
+    boolean2 attribute_matched = FALSE;
 
     /* Print using indentation
     < 1><0x000854ff GOFF=0x00546047>    DW_TAG_pointer_type -> 34
@@ -1239,7 +1238,7 @@ print_one_die(Dwarf_Debug dbg, Dwarf_Die die,
             }
 
             {
-                boolean attr_match = print_attribute(dbg, die, attr,
+                boolean2 attr_match = print_attribute(dbg, die, attr,
                     atlist[i],
                     print_information, die_indent_level, srcfiles, cnt);
                 if (print_information == FALSE && attr_match) {
@@ -1490,7 +1489,7 @@ print_ranges_list_to_extra(Dwarf_Debug dbg,
 }
 
 
-static boolean
+static boolean2
 is_location_form(int form)
 {
     if (form == DW_FORM_block1 ||
@@ -1536,10 +1535,10 @@ show_attr_form_error(Dwarf_Debug dbg,unsigned attr,unsigned form,struct esb_s *o
 
 /*  Traverse an attribute and following any reference
     in order to detect self references to DIES (loop). */
-static boolean
+static boolean2
 traverse_attribute(Dwarf_Debug dbg, Dwarf_Die die, Dwarf_Half attr,
     Dwarf_Attribute attr_in,
-    boolean print_information,
+    boolean2 print_information,
     char **srcfiles, Dwarf_Signed cnt,
     int die_indent_level)
 {
@@ -1547,7 +1546,7 @@ traverse_attribute(Dwarf_Debug dbg, Dwarf_Die die, Dwarf_Half attr,
     const char * atname = 0;
     int tres = 0;
     Dwarf_Half tag = 0;
-    boolean circular_reference = FALSE;
+    boolean2 circular_reference = FALSE;
     Dwarf_Bool is_info = TRUE;
     struct esb_s valname;
 
@@ -1646,7 +1645,7 @@ traverse_attribute(Dwarf_Debug dbg, Dwarf_Die die, Dwarf_Half attr,
 }
 
 /* Traverse one DIE in order to detect self references to DIES. */
-static boolean
+static boolean2
 traverse_one_die(Dwarf_Debug dbg, Dwarf_Attribute attrib, Dwarf_Die die,
     char **srcfiles, Dwarf_Signed cnt, int die_indent_level)
 {
@@ -1654,8 +1653,8 @@ traverse_one_die(Dwarf_Debug dbg, Dwarf_Attribute attrib, Dwarf_Die die,
     Dwarf_Off overall_offset = 0;
     Dwarf_Signed atcnt = 0;
     int res = 0;
-    boolean circular_reference = FALSE;
-    boolean print_information = FALSE;
+    boolean2 circular_reference = FALSE;
+    boolean2 print_information = FALSE;
 
     res = dwarf_tag(die, &tag, &err);
     if (res != DW_DLV_OK) {
@@ -1761,7 +1760,7 @@ print_range_attribute(Dwarf_Debug dbg,
    Dwarf_Attribute attr_in,
    Dwarf_Half theform,
    int dwarf_names_print_on_error,
-   boolean print_information,
+   boolean2 print_information,
    int *append_extra_string,
    struct esb_s *esb_extrap)
 {
@@ -1947,11 +1946,11 @@ have_a_search_match(const char *valname,const char *atname)
 }
 
 
-static boolean
+static boolean2
 print_attribute(Dwarf_Debug dbg, Dwarf_Die die,
     Dwarf_Half attr,
     Dwarf_Attribute attr_in,
-    boolean print_information,
+    boolean2 print_information,
     int die_indent_level,
     char **srcfiles, Dwarf_Signed cnt)
 {
@@ -1963,8 +1962,8 @@ print_attribute(Dwarf_Debug dbg, Dwarf_Die die,
     int tres = 0;
     Dwarf_Half tag = 0;
     int append_extra_string = 0;
-    boolean found_search_attr = FALSE;
-    boolean bTextFound = FALSE;
+    boolean2 found_search_attr = FALSE;
+    boolean2 bTextFound = FALSE;
     Dwarf_Bool is_info = FALSE;
 
     esb_constructor(&valname);
@@ -3347,7 +3346,7 @@ check_attributes_encoding(Dwarf_Half attr,Dwarf_Half theform,
     Dwarf_Unsigned value)
 {
     static int factor[DW_FORM_data1 + 1];
-    static boolean do_init = TRUE;
+    static boolean2 do_init = TRUE;
 
     if (do_init) {
         /* Create table on first call */
@@ -3408,7 +3407,7 @@ void
 print_attributes_encoding(Dwarf_Debug dbg)
 {
     if (attributes_encoding_table) {
-        boolean print_header = TRUE;
+        boolean2 print_header = TRUE;
         Dwarf_Unsigned total_entries = 0;
         Dwarf_Unsigned total_bytes_formx = 0;
         Dwarf_Unsigned total_bytes_leb128 = 0;
@@ -4233,8 +4232,11 @@ show_form_itself(int local_show_form,
     }
 }
 
-//#include "tmp-ta-table.c"
-//#include "tmp-ta-ext-table.c"
+#include "tmp-ta-table.c"
+#include "tmp-ta-ext-table.c"
+
+//#define ATTR_TREE_ROW_COUNT 4
+//#define ATTR_TREE_COLUMN_COUNT 6
 
 static int
 legal_tag_attr_combination(Dwarf_Half tag, Dwarf_Half attr)
@@ -4242,46 +4244,46 @@ legal_tag_attr_combination(Dwarf_Half tag, Dwarf_Half attr)
     if (tag <= 0) {
         return FALSE;
     }
-    if (tag < ATTR_TREE_ROW_COUNT) {
-        int index = attr / BITS_PER_WORD;
-        if (index < ATTR_TREE_COLUMN_COUNT) {
-            unsigned bitflag = 1 << (attr % BITS_PER_WORD);
-            int known = ((tag_attr_combination_table[tag][index]
-                & bitflag) > 0 ? TRUE : FALSE);
-            if (known) {
-#ifdef HAVE_USAGE_TAG_ATTR
-                /* Record usage of pair (tag,attr) */
-                if (print_usage_tag_attr) {
-                    Usage_Tag_Attr *usage_ptr = usage_tag_attr[tag];
-                    while (usage_ptr->attr) {
-                        if (attr == usage_ptr->attr) {
-                            ++usage_ptr->count;
-                            break;
-                        }
-                        ++usage_ptr;
-                    }
-                }
-#endif /* HAVE_USAGE_TAG_ATTR */
-                return TRUE;
-            }
-        }
-    }
-    /*  DW_AT_MIPS_fde  used to return TRUE as that was
-        convenient for SGI/MIPS users. */
-    if (!suppress_check_extensions_tables) {
-        int r = 0;
-        for (; r < ATTR_TREE_EXT_ROW_COUNT; ++r ) {
-            int c = 1;
-            if (tag != tag_attr_combination_ext_table[r][0]) {
-                continue;
-            }
-            for (; c < ATTR_TREE_EXT_COLUMN_COUNT ; ++c) {
-                if (tag_attr_combination_ext_table[r][c] == attr) {
-                    return TRUE;
-                }
-            }
-        }
-    }
+//    if (tag < ATTR_TREE_ROW_COUNT) {
+//        int index = attr / BITS_PER_WORD;
+//        if (index < ATTR_TREE_COLUMN_COUNT) {
+//            unsigned bitflag = 1 << (attr % BITS_PER_WORD);
+//            int known = ((tag_attr_combination_table[tag][index]
+//                & bitflag) > 0 ? TRUE : FALSE);
+//            if (known) {
+//#ifdef HAVE_USAGE_TAG_ATTR
+//                /* Record usage of pair (tag,attr) */
+//                if (print_usage_tag_attr) {
+//                    Usage_Tag_Attr *usage_ptr = usage_tag_attr[tag];
+//                    while (usage_ptr->attr) {
+//                        if (attr == usage_ptr->attr) {
+//                            ++usage_ptr->count;
+//                            break;
+//                        }
+//                        ++usage_ptr;
+//                    }
+//                }
+//#endif /* HAVE_USAGE_TAG_ATTR */
+//                return TRUE;
+//            }
+//        }
+//    }
+//    /*  DW_AT_MIPS_fde  used to return TRUE as that was
+//        convenient for SGI/MIPS users. */
+//    if (!suppress_check_extensions_tables) {
+//        int r = 0;
+//        for (; r < ATTR_TREE_EXT_ROW_COUNT; ++r ) {
+//            int c = 1;
+//            if (tag != tag_attr_combination_ext_table[r][0]) {
+//                continue;
+//            }
+//            for (; c < ATTR_TREE_EXT_COLUMN_COUNT ; ++c) {
+//                if (tag_attr_combination_ext_table[r][c] == attr) {
+//                    return TRUE;
+//                }
+//            }
+//        }
+//    }
     return (FALSE);
 }
 
@@ -4348,7 +4350,7 @@ print_tag_attributes_usage(Dwarf_Debug dbg)
     /*  Traverse the tag-tree table to print its usage and then use the
         DW_TAG value as an index into the tag_attr table to print its
         associated usage all together. */
-    boolean print_header = TRUE;
+    boolean2 print_header = TRUE;
     Rate_Tag_Tree *tag_rate;
     Rate_Tag_Attr *atr_rate;
     Usage_Tag_Tree *usage_tag_tree_ptr;

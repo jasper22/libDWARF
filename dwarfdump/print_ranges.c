@@ -106,7 +106,7 @@ check_ranges_list(Dwarf_Debug dbg,
     Dwarf_Addr hipc = 0;
     Dwarf_Bool bError = FALSE;
 
-    static boolean do_print = TRUE;
+    static boolean2 do_print = TRUE;
 #if 0
 {
 /* START -> Just for debugging */

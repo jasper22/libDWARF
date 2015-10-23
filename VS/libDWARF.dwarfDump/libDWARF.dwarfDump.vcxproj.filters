@@ -92,9 +92,6 @@
     <ClCompile Include="..\..\dwarfdump\tag_common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dwarfdump\tag_attr.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dwarfdump\strstrnocase.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -183,6 +180,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dwarfdump\addrmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dwarfdump\tmp-ta-table.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dwarfdump\tmp-tt-ext-table.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dwarfdump\tmp-ta-ext-table.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dwarfdump\tmp-tt-table.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

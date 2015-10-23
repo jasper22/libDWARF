@@ -74,10 +74,10 @@ trim_newline(char *line, int max)
 }
 
 /*  Detect empty lines (and other lines we do not want to read) */
-boolean
+boolean2
 is_skippable_line(char *pLine)
 {
-    boolean empty = TRUE;
+    boolean2 empty = TRUE;
 
     if (pLine[0] == '#') {
         /* Preprocessor lines are of no interest. */
@@ -99,7 +99,7 @@ read_value(unsigned int *outval, FILE*file)
     char *res = 0;
     unsigned long lval;
     char *strout = 0;
-    boolean bBlankLine = TRUE;
+    boolean2 bBlankLine = TRUE;
 
     ++linecount;
     *outval = 0;

@@ -199,7 +199,7 @@ print_aranges(Dwarf_Debug dbg)
                         if (do_print_dwarf){
                             /* There is no die if its a set-end entry */
                             print_one_die(dbg, cu_die,
-                                /* print_information= */ (boolean) TRUE,
+                                /* print_information= */ (boolean2) TRUE,
                                 /* indent_level = */0,
                                 /* srcfiles= */ 0,
                                 /* cnt= */ 0,

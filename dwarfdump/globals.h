@@ -102,7 +102,7 @@ typedef char * string;
 #include "checkutil.h"
 #ifndef BOOLEAN_TYPEDEFED
 #define BOOLEAN_TYPEDEFED
-typedef int boolean;
+typedef int boolean2;
 #endif /* BOOLEAN_TYPEDEFED */
 #ifndef FALSE
 #define FALSE 0
@@ -122,10 +122,10 @@ typedef struct {
     int errors;
 } Dwarf_Check_Result;
 
-extern boolean do_check_dwarf;
-extern boolean do_print_dwarf;
+extern boolean2 do_check_dwarf;
+extern boolean2 do_print_dwarf;
 
-extern boolean record_dwarf_error;   /* A test has failed, this
+extern boolean2 record_dwarf_error;   /* A test has failed, this
   is normally set FALSE shortly after being set TRUE, it is
   a short-range hint we should print something we might not
   otherwise print (under the circumstances). */
@@ -138,15 +138,15 @@ extern char PU_name[COMPILE_UNIT_NAME_LEN]; /* PU Name */
 extern char CU_name[COMPILE_UNIT_NAME_LEN]; /* CU Name */
 extern char CU_producer[COMPILE_UNIT_NAME_LEN];  /* CU Producer Name */
 
-extern boolean seen_PU;                     /* Detected a PU. */
-extern boolean seen_CU;                     /* Detected a CU. */
-extern boolean need_CU_name;                /* Need CU name. */
-extern boolean need_CU_base_address;        /* Need CU Base address. */
-extern boolean need_CU_high_address;        /* Need CU High address. */
-extern boolean need_PU_valid_code;          /* Need PU valid code. */
+extern boolean2 seen_PU;                     /* Detected a PU. */
+extern boolean2 seen_CU;                     /* Detected a CU. */
+extern boolean2 need_CU_name;                /* Need CU name. */
+extern boolean2 need_CU_base_address;        /* Need CU Base address. */
+extern boolean2 need_CU_high_address;        /* Need CU High address. */
+extern boolean2 need_PU_valid_code;          /* Need PU valid code. */
 
-extern boolean seen_PU_base_address;        /* Detected a Base address for PU */
-extern boolean seen_PU_high_address;        /* Detected a High address for PU */
+extern boolean2 seen_PU_base_address;        /* Detected a Base address for PU */
+extern boolean2 seen_PU_high_address;        /* Detected a High address for PU */
 extern Dwarf_Addr PU_base_address;          /* PU Base address */
 extern Dwarf_Addr PU_high_address;          /* PU High address */
 
@@ -172,13 +172,13 @@ extern Bucket_Group *pLinkonceInfo;
 extern Bucket_Group *pVisitedInfo;
 
 /*  Display parent/children when in wide format. */
-extern boolean display_parent_tree;
-extern boolean display_children_tree;
+extern boolean2 display_parent_tree;
+extern boolean2 display_children_tree;
 extern int stop_indent_level;
 
 /*  Print search results when in wide format. */
-extern boolean search_wide_format;
-extern boolean search_is_on;
+extern boolean2 search_wide_format;
+extern boolean2 search_is_on;
 
 /* Calculate wasted space */
 extern void calculate_attributes_usage(Dwarf_Half attr,Dwarf_Half theform,
@@ -192,7 +192,7 @@ extern int search_occurrences;
 #ifdef HAVE_REGEX
 extern regex_t search_re;
 #endif
-extern boolean is_strstrnocase(const char *data, const char *pattern);
+extern boolean2 is_strstrnocase(const char *data, const char *pattern);
 
 /* Options to enable debug tracing. */
 #define MAX_TRACE_LEVEL 10
@@ -230,51 +230,51 @@ extern int nTrace[MAX_TRACE_LEVEL + 1];
 #define DEBUG_GDB_INDEX   15
 
 extern int verbose;
-extern boolean dense;
-extern boolean ellipsis;
-extern boolean use_mips_regnames;
-extern boolean show_global_offsets;
-extern boolean show_form_used;
-extern boolean display_offsets;
+extern boolean2 dense;
+extern boolean2 ellipsis;
+extern boolean2 use_mips_regnames;
+extern boolean2 show_global_offsets;
+extern boolean2 show_form_used;
+extern boolean2 display_offsets;
 
-extern boolean check_pubname_attr;
-extern boolean check_attr_tag;
-extern boolean check_tag_tree;
-extern boolean check_type_offset;
-extern boolean check_decl_file;
-extern boolean check_lines;
-extern boolean check_ranges;       /* Ranges (aranges & ranges) check */
-extern boolean check_fdes;
-extern boolean check_aranges;
-extern boolean check_harmless;
-extern boolean check_abbreviations;
-extern boolean check_dwarf_constants;
-extern boolean check_di_gaps;
-extern boolean check_forward_decl;
-extern boolean check_self_references;
-extern boolean check_attr_encoding;   /* Attributes encoding */
-extern boolean suppress_nested_name_search;
-extern boolean suppress_check_extensions_tables;
-extern boolean check_duplicated_attributes;
+extern boolean2 check_pubname_attr;
+extern boolean2 check_attr_tag;
+extern boolean2 check_tag_tree;
+extern boolean2 check_type_offset;
+extern boolean2 check_decl_file;
+extern boolean2 check_lines;
+extern boolean2 check_ranges;       /* Ranges (aranges & ranges) check */
+extern boolean2 check_fdes;
+extern boolean2 check_aranges;
+extern boolean2 check_harmless;
+extern boolean2 check_abbreviations;
+extern boolean2 check_dwarf_constants;
+extern boolean2 check_di_gaps;
+extern boolean2 check_forward_decl;
+extern boolean2 check_self_references;
+extern boolean2 check_attr_encoding;   /* Attributes encoding */
+extern boolean2 suppress_nested_name_search;
+extern boolean2 suppress_check_extensions_tables;
+extern boolean2 check_duplicated_attributes;
 /* lots of checks make no sense on a dwp debugfission object. */
-extern boolean suppress_checking_on_dwp;
+extern boolean2 suppress_checking_on_dwp;
 
 /* Print global (unique) error messages */
-extern boolean print_unique_errors;
-extern boolean found_error_message;
+extern boolean2 print_unique_errors;
+extern boolean2 found_error_message;
 /* Print the information only if unique errors is set and it is first time */
 #define PRINTING_UNIQUE (!found_error_message)
 
 extern int break_after_n_units;
 
-extern boolean check_names;          /* Check for invalid names */
-extern boolean check_verbose_mode;   /* During '-k' mode, display errors */
-extern boolean check_frames;         /* Frames check */
-extern boolean check_frames_extended;/* Extensive frames check */
-extern boolean check_locations;      /* Location list check */
+extern boolean2 check_names;          /* Check for invalid names */
+extern boolean2 check_verbose_mode;   /* During '-k' mode, display errors */
+extern boolean2 check_frames;         /* Frames check */
+extern boolean2 check_frames_extended;/* Extensive frames check */
+extern boolean2 check_locations;      /* Location list check */
 
-extern boolean print_usage_tag_attr;      /* Print tag-attr basic usage */
-extern boolean print_usage_tag_attr_full; /* Print tag-attr full usage */
+extern boolean2 print_usage_tag_attr;      /* Print tag-attr basic usage */
+extern boolean2 print_usage_tag_attr_full; /* Print tag-attr full usage */
 
 /* Check categories corresponding to the -k option */
 typedef enum /* Dwarf_Check_Categories */ {
@@ -313,14 +313,14 @@ typedef enum /* Dwarf_Check_Categories */ {
     LAST_CATEGORY  /* Must be last */
 } Dwarf_Check_Categories;
 
-extern boolean info_flag;
-extern boolean line_flag;
-extern boolean line_print_pc;        /* Print <pc> addresses. */
-extern boolean use_old_dwarf_loclist;
-extern boolean producer_children_flag;   /* List of CUs per compiler */
+extern boolean2 info_flag;
+extern boolean2 line_flag;
+extern boolean2 line_print_pc;        /* Print <pc> addresses. */
+extern boolean2 use_old_dwarf_loclist;
+extern boolean2 producer_children_flag;   /* List of CUs per compiler */
 
 extern char cu_name[ ];
-extern boolean cu_name_flag;
+extern boolean2 cu_name_flag;
 extern Dwarf_Off fde_offset_for_cu_low;
 extern Dwarf_Off fde_offset_for_cu_high;
 
@@ -368,7 +368,7 @@ extern void print_ranges_list_to_extra(Dwarf_Debug dbg,
     Dwarf_Signed rangecount,
     Dwarf_Unsigned bytecount,
     struct esb_s *stringbuf);
-boolean should_skip_this_cu(Dwarf_Debug dbg, Dwarf_Die cu_die, Dwarf_Error err);
+boolean2 should_skip_this_cu(Dwarf_Debug dbg, Dwarf_Die cu_die, Dwarf_Error err);
 
 /* Returns the DW_AT_name of the CU */
 string old_get_cu_name(Dwarf_Debug dbg,Dwarf_Die cu_die,Dwarf_Error err);
@@ -390,17 +390,17 @@ extern void print_die_and_children(
     Dwarf_Bool is_info,
     char **srcfiles,
     Dwarf_Signed cnt);
-extern boolean print_one_die(
+extern boolean2 print_one_die(
     Dwarf_Debug dbg,
     Dwarf_Die die,
-    boolean print_information,
+    boolean2 print_information,
     int die_indent_level,
     char **srcfiles,
     Dwarf_Signed cnt,
-    boolean ignore_die_stack);
+    boolean2 ignore_die_stack);
 
 /* Check for specific compiler */
-extern boolean checking_this_compiler();
+extern boolean2 checking_this_compiler();
 extern void update_compiler_target(const char *producer_name);
 extern void add_cu_name_compiler_target(char *name);
 

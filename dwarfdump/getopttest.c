@@ -365,75 +365,75 @@ test8(void)
 
 
 
-int main(int argc, const char **argv)
-{
-    int ct = 0;
-    int failct = 0;
-    printf("argc: %d\n",argc);
-    for( ct = 0; ct < argc ; ++ct) {
-        printf("argv[%d] = %s\n",ct,argv[ct]);
-    }
-    if ( argc == 3) {
-        int num = 0;
-        if (strcmp(argv[1],"-c")) {
-            printf("FAIL: invalid arg list\n");
-            exit(1);
-        }
-        num = atoi(argv[2]);
-        printf("Run one test, number %d\n",num);
-        switch(num) {
-        case 1:
-            failct = test1();
-            break;
-        case 2:
-            failct = test2();
-            break;
-        case 3:
-            failct = test3();
-            break;
-        case 5:
-            failct = test5();
-            break;
-        case 6:
-            failct = test6();
-            break;
-        case 7:
-            failct = test7();
-            break;
-        case 8:
-            failct = test8();
-            break;
-        default:
-            printf("FAIL: invalid test number %d\n",num);
-            exit(1);
-        }
-        if ( failct) {
-            printf("FAIL getopttest\n");
-            exit(1);
-        }
-        printf("PASS getopttest\n");
-        exit(0);
-    } else if (argc != 1) {
-        printf("FAIL: invalid arg list\n");
-            exit(1);
-    }
-    failct += test5();
-    dwgetoptresetfortestingonly();
-    failct += test1();
-    dwgetoptresetfortestingonly();
-    failct += test2();
-    dwgetoptresetfortestingonly();
-    failct += test3();
-    dwgetoptresetfortestingonly();
-    failct += test6();
-    dwgetoptresetfortestingonly();
-    failct += test7();
-    dwgetoptresetfortestingonly();
-    failct += test8();
-    if ( failct) {
-        printf("FAIL getopttest\n");
-        exit(1);
-    }
-    printf("PASS getopttest\n");
-    return 0;
-}
+////int main(int argc, const char **argv)
+////{
+////    int ct = 0;
+////    int failct = 0;
+////    printf("argc: %d\n",argc);
+////    for( ct = 0; ct < argc ; ++ct) {
+////        printf("argv[%d] = %s\n",ct,argv[ct]);
+////    }
+////    if ( argc == 3) {
+////        int num = 0;
+////        if (strcmp(argv[1],"-c")) {
+////            printf("FAIL: invalid arg list\n");
+////            exit(1);
+////        }
+////        num = atoi(argv[2]);
+////        printf("Run one test, number %d\n",num);
+////        switch(num) {
+////        case 1:
+////            failct = test1();
+////            break;
+////        case 2:
+////            failct = test2();
+////            break;
+////        case 3:
+////            failct = test3();
+////            break;
+////        case 5:
+////            failct = test5();
+////            break;
+////        case 6:
+////            failct = test6();
+////            break;
+////        case 7:
+////            failct = test7();
+////            break;
+////        case 8:
+////            failct = test8();
+////            break;
+////        default:
+////            printf("FAIL: invalid test number %d\n",num);
+////            exit(1);
+////        }
+////        if ( failct) {
+////            printf("FAIL getopttest\n");
+////            exit(1);
+////        }
+////        printf("PASS getopttest\n");
+////        exit(0);
+////    } else if (argc != 1) {
+////        printf("FAIL: invalid arg list\n");
+////            exit(1);
+////    }
+////    failct += test5();
+////    dwgetoptresetfortestingonly();
+////    failct += test1();
+////    dwgetoptresetfortestingonly();
+////    failct += test2();
+////    dwgetoptresetfortestingonly();
+////    failct += test3();
+////    dwgetoptresetfortestingonly();
+////    failct += test6();
+////    dwgetoptresetfortestingonly();
+////    failct += test7();
+////    dwgetoptresetfortestingonly();
+////    failct += test8();
+////    if ( failct) {
+////        printf("FAIL getopttest\n");
+////        exit(1);
+////    }
+////    printf("PASS getopttest\n");
+////    return 0;
+////}

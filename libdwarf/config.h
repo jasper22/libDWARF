@@ -67,6 +67,7 @@
 /* Define to 1 if you have the <libelf.h> header file. */
 #define HAVE_LIBELF_H 1
 
-//#ifdef WIN32
-//#define snprintf _snprintf
-//#endif
+#ifdef WIN32
+#define snprintf _snprintf
+#define HAVE_ELF64_R_INFO 1
+#endif

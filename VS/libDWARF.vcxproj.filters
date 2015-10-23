@@ -368,6 +368,9 @@
     <ClInclude Include="..\libdwarf\dwarf_names_new.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="libdwarf.cppsharp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\libdwarf\libdwarf.h">

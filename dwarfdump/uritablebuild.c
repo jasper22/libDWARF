@@ -117,15 +117,14 @@ print_entry(int c)
 }
 
 
-int
-main()
-{
-    int i = 0;
-    printf("/* dwarfdump_ctype table */\n");
-    printf("char dwarfdump_ctype_table[256] = { \n");
-    for ( i = 0 ; i <= 255; ++i) {
-        print_entry(i);
-    }
-    printf("};\n");
-}
-
+////int
+////main()
+////{
+////    int i = 0;
+////    printf("/* dwarfdump_ctype table */\n");
+////    printf("char dwarfdump_ctype_table[256] = { \n");
+////    for ( i = 0 ; i <= 255; ++i) {
+////        print_entry(i);
+////    }
+////    printf("};\n");
+////}

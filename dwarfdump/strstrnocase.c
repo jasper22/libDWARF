@@ -51,14 +51,14 @@ strstrnocase.c
 #include <stdio.h>
 #include "globals.h"
 
-boolean
+boolean2
 is_strstrnocase(const char * container, const char * contained)
 {
     const unsigned char *ct = (const unsigned char *)container;
     for (; *ct; ++ct )
     {
         const unsigned char * cntnd = (const unsigned char *)contained;
-        boolean innerwrong = TRUE;
+        boolean2 innerwrong = TRUE;
         for (; *cntnd; ++cntnd,++ct)
         {
             char lct = tolower(*ct);

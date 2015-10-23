@@ -28,6 +28,7 @@
 #include "stdafx.h"
 #endif /* HAVE_STDAFX_H */
 
+#include <Windows.h>
 #include "globals.h"
 #include "dwarf.h"
 #include "libdwarf.h"

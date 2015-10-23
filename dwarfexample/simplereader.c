@@ -111,6 +111,7 @@ static int stdrun = TRUE;
 
 static int unittype      = DW_UT_compile;
 static Dwarf_Bool g_is_info = TRUE;
+static Dwarf_Bool g_is_types = FALSE;
 
 /*  dienumberr is used to count DIEs.
     The point is to match fissionfordie. */
@@ -448,7 +449,7 @@ read_cu_list(Dwarf_Debug dbg)
     Dwarf_Unsigned typeoffset = 0;
     Dwarf_Unsigned next_cu_header = 0;
     Dwarf_Half     header_cu_type = unittype;
-    Dwarf_Bool     is_info = g_is_info;
+	Dwarf_Bool     is_info = g_is_info;
     Dwarf_Error error;
     int cu_number = 0;
 
@@ -462,12 +463,21 @@ read_cu_list(Dwarf_Debug dbg)
         Dwarf_Die cu_die = 0;
         int res = DW_DLV_ERROR;
         memset(&signature,0, sizeof(signature));
-        res = dwarf_next_cu_header_d(dbg,is_info,&cu_header_length,
-            &version_stamp, &abbrev_offset,
-            &address_size, &offset_size,
-            &extension_size,&signature,
-            &typeoffset, &next_cu_header,
-            &header_cu_type,&error);
+
+		res = dwarf_next_cu_header_d(dbg,
+									is_info,
+									&cu_header_length,
+									&version_stamp, 
+									&abbrev_offset,
+									&address_size, 
+									&offset_size,
+									&extension_size,
+									&signature,
+									&typeoffset, 
+									&next_cu_header,
+									&header_cu_type,
+									&error);
+
         if(res == DW_DLV_ERROR) {
             char *em = dwarf_errmsg(error);
             printf("Error in dwarf_next_cu_header: %s\n",em);
